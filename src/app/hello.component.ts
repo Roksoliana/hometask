@@ -21,11 +21,10 @@ export class HelloComponent  {
   constructor() {}
 
   private add(value: string): void{
-    // this.todos.push({text: value, done:false});
     this.todos=[ ... this.todos, {text: value, done:false}];
   }
   private remove(id:number): void{
-    this.todos.splice(id, 1);
+    this.todos=this.todos.filter((a,b)=>b!=id);
     this.count=this.cal();
   }
   private clean(){
@@ -33,7 +32,7 @@ export class HelloComponent  {
     this.count=0;
   }
   private search(term: string){
-    this.todos.filter(i=>i.text.search(term)!=-1);
+    this.todos=this.todos.filter(i=>i.text.search(term)!=-1);
   }
   private someFunction(i: number){
     this.todos[i].done=!this.todos[i].done;
