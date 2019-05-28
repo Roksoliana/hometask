@@ -1,0 +1,30 @@
+<h2>Todo</h2>
+        <div>
+            <input type="text" placeholder="filter tasks"  
+                    name="search" [(ngModel)]="searchText" autocomplete="off">
+        <br>
+    <span>{{count}} remaining </span>
+ 
+    <ul class="unstyled">
+      <li *ngFor="let todo of todos | filter:searchText; let i = index">
+        <input type="checkbox" 
+            [checked]="todo.done"
+            (change)="someFunction(i)">
+
+            <span class="done-" *ngIf="todo.done; else elseBlock" 
+                [ngStyle]="{'text-decoration': 'line-through'}">{{todo.text}}
+            </span>
+            <ng-template #elseBlock>
+                <span class="done-">{{todo.text}}</span>
+            </ng-template>
+        [<a href="#" (click)="remove(i)">remove</a>]
+      </li>
+    </ul>
+    
+    <form>
+      <input type="text" #f>
+      <input class="btn-primary" type="submit" value="add"  (click)="add(f.value)">
+    </form>
+
+      <a href="#" (click)="clean()">clean</a> 
+  </div>
