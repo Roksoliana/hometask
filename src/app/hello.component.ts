@@ -21,7 +21,8 @@ export class HelloComponent  {
   constructor() {}
 
   private add(value: string): void{
-    this.todos.push({text: value, done:false});
+    // this.todos.push({text: value, done:false});
+    this.todos=[ ... this.todos, {text: value, done:false}];
   }
   private remove(id:number): void{
     this.todos.splice(id, 1);
