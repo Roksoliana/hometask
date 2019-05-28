@@ -17,13 +17,13 @@
             <ng-template #elseBlock>
                 <span class="done-">{{todo.text}}</span>
             </ng-template>
-        [<a href="#" (click)="remove(i)">remove</a>]
+        [<a href="#" (click)="remove(todo.id)">remove</a>]
       </li>
     </ul>
     
     <form>
       <input type="text" #f>
-      <input class="btn-primary" type="submit" value="add"  (click)="add(f.value)">
+      <input class="btn-primary" type="submit" value="add" (click)="add(f.value)">
     </form>
 
       <a href="#" (click)="clean()">clean</a> 

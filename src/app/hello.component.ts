@@ -8,12 +8,13 @@ import { Component, Input } from '@angular/core';
 export class HelloComponent  {
   private name: string;
   public searchText:string;
+  private idCount: number=5;
   public todos = [
-    {text:'learn angular', done:true},
-    {text:'build an angular app', done:false},
-    {text:'modify', done:true},
-    {text:'test', done:false},
-    {text:'close', done:false}
+    {id:1, text:'learn angular', done:true},
+    {id:2, text:'build an angular app', done:false},
+    {id:3, text:'modify', done:true},
+    {id:4, text:'test', done:false},
+    {id:5, text:'close', done:false}
     ];
 
   private count: number=this.todos.filter(i=>i.done).length;
@@ -21,10 +22,10 @@ export class HelloComponent  {
   constructor() {}
 
   private add(value: string): void{
-    this.todos=[ ... this.todos, {text: value, done:false}];
+    this.todos=[ ... this.todos, { id:this.idCount++, text: value, done:false}];
   }
   private remove(id:number): void{
-    this.todos=this.todos.filter((a,b)=>b!=id);
+    this.todos=this.todos.filter(a=>a.id!=id);
     this.count=this.cal();
   }
   private clean(){
